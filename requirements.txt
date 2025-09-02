@@ -1,0 +1,6 @@
+geopandas
+sqlalchemy
+asyncpg
+psycopg2-binary
+geoalchemy2
+pandas
