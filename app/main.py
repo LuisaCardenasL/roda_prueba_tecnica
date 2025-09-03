@@ -4,16 +4,21 @@ from app.transform import transform_data
 from app.load_pg import load_geodataframe_to_postgres
 from app.db import sync_engine
 
+
 def main():
     """
     Main function to run the ETL pipeline.
     """
-    parser = argparse.ArgumentParser(description="Roda Technical Challenge - Batch Mode")
-    parser.add_argument("--mode", type=str, required=True, help="Execution mode (batch or real-time)")
+    parser = argparse.ArgumentParser(
+        description="Roda Technical Challenge - Batch Mode"
+    )
+    parser.add_argument(
+        "--mode", type=str, required=True, help="Execution mode (batch or real-time)"
+    )
     parser.add_argument("--region", type=str, help="Region to process")
     parser.add_argument("--start", type=str, help="Start date")
     parser.add_argument("--end", type=str, help="End date")
-    
+
     args = parser.parse_args()
 
     if args.mode == "batch":
@@ -38,6 +43,7 @@ def main():
         print("ETL pipeline finished.")
     else:
         print(f"Mode '{args.mode}' is not supported yet.")
+
 
 if __name__ == "__main__":
     main()

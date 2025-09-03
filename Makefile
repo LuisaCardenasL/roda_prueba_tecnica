@@ -1,4 +1,4 @@
-.PHONY: install run test lint
+.PHONY: install run test fmt lint docker-build docker-run docker-prune
 
 install:
 	pip install -r requirements.txt
@@ -10,9 +10,23 @@ run:
 	export $(grep -v '^#' .env | xargs) && python -m app.main --mode batch
 
 test:
-	# Placeholder for running tests
-	@echo "No tests yet."
+	python -m pytest
+
+fmt:
+	python -m ruff check --fix . && python -m black .
 
 lint:
-	# Placeholder for linting
-	@echo "No linter configured yet."
+	python -m ruff check . && python -m black --check .
+
+docker-build:
+	docker build -t roda-microservice:local .
+
+docker-run:
+	docker run --rm -it \
+	  --env-file .env \
+	  --network host \
+	  roda-microservice:local
+
+
+docker-prune:
+	docker system prune -f

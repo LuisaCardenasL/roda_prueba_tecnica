@@ -1,6 +1,7 @@
 import geopandas as gpd
 from sqlalchemy.engine import Engine
 
+
 def load_geodataframe_to_postgres(gdf: gpd.GeoDataFrame, engine: Engine):
     """
     Loads a GeoDataFrame into a PostgreSQL table using a synchronous engine.
@@ -14,5 +15,5 @@ def load_geodataframe_to_postgres(gdf: gpd.GeoDataFrame, engine: Engine):
         con=engine,
         schema="roda",
         if_exists="replace",  # 'replace' will drop the table first, 'append' will add data
-        index=False
+        index=False,
     )

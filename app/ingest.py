@@ -1,5 +1,6 @@
 import geopandas as gpd
 
+
 def load_geojson_to_geodataframe(file_path: str) -> gpd.GeoDataFrame:
     """
     Loads a GeoJSON file into a GeoDataFrame.

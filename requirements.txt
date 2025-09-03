@@ -4,3 +4,6 @@ asyncpg
 psycopg2-binary
 geoalchemy2
 pandas
+pytest
+ruff
+black
